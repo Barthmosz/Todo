@@ -2,25 +2,23 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR .
+COPY ["Todo.Infra/Todo.Infra.csproj", "Todo.Infra/"]
 COPY ["Todo.API/Todo.API.csproj", "Todo.API/"]
 COPY ["Todo.Application/Todo.Application.csproj", "Todo.Application/"]
 COPY ["Todo.Domain/Todo.Domain.csproj", "Todo.Domain/"]
 COPY ["Todo.Persistence/Todo.Persistence.csproj", "Todo.Persistence/"]
-COPY ["Todo.Infra/Todo.Infra.csproj", "Todo.Infra/"]
 RUN dotnet restore "Todo.API/Todo.API.csproj"
 COPY . .
-WORKDIR "/Todo.API"
-RUN dotnet build "Todo.API.csproj" -c Release -o /app/build
+WORKDIR "/Todo.Infra"
+RUN dotnet build "Todo.Infra.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Todo.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Todo.Infra.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Todo.API.dll"]
+ENTRYPOINT ["dotnet", "Todo.Infra.dll"]

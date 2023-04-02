@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  todo.api:
+    image: ${DOCKER_REGISTRY-}todoapi
+    build:
+      context: .
+      dockerfile: Todo.API/Dockerfile
+    networks:
+      - todo-network
+    depends_on:
+      - todo.db
+
+  todo.infra:
+    image: ${DOCKER_REGISTRY-}todoinfra
+    build:
+      context: .
+      dockerfile: Todo.Infra/Dockerfile
+    networks:
+      - todo-network
+    depends_on:
+      - todo.db
+
+  todo.db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: unless-stopped
+    networks:
+      - todo-network
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: Password@123
+      ACCEPT_EULA: Y
+    expose:
+      - 1433
+      
+networks: 
+    todo-network:
+        driver: bridge
