@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.API", "Todo.API\Todo.API.csproj", "{F3304125-AFDE-40FB-ABF0-193C5C041AAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.API", "Todo.API\Todo.API.csproj", "{F3304125-AFDE-40FB-ABF0-193C5C041AAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application", "Todo.Application\Todo.Application.csproj", "{C8C56783-A888-4703-8210-B4C983339985}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F3304125-AFDE-40FB-ABF0-193C5C041AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3304125-AFDE-40FB-ABF0-193C5C041AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3304125-AFDE-40FB-ABF0-193C5C041AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C56783-A888-4703-8210-B4C983339985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C56783-A888-4703-8210-B4C983339985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C56783-A888-4703-8210-B4C983339985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C56783-A888-4703-8210-B4C983339985}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
